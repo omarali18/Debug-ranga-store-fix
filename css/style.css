@@ -102,6 +102,12 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+.modal-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 @media only screen and (max-width: 768px) {
   #all-products {
     display: grid;

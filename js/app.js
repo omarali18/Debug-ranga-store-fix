@@ -88,14 +88,26 @@ const productUrl = async productid => {
   const res = await fetch(url)
   const data = await res.json()
   document.getElementById("product-details").textContent = "";
-  // displayDetails(data);
-  productModal();
+  productModal(data);
 }
 
 // Display single product details
 const modal = document.getElementById("details-modal")
-const productModal = () => {
+const productModal = (product) => {
   modal.style.display = "block"
+  const { count, rate } = product.rating;
+  const imageDiv = document.getElementById("image")
+  imageDiv.innerHTML = `
+  <img class="product-image" src=${product.image}></img>
+  `
+  const productNmae = document.getElementById("Pdt-name");
+  productNmae.innerHTML = `
+  <h3 >${product.title}</h3>
+  <p>Category: <span class="ptoduct-Category">${product.category}</span></p>
+  <h2>Price: $ ${product.price}</h2>
+  <p>Count : ${count} Rating : ${rate}</p>
+  <button button button onclick = "addToCart(${product.id},${product.price})" id = "addToCart-btn" class="buy-now btn btn-success" > add to cart</button >`
+
 }
 const closeModal = () => {
   modal.style.display = "none"
@@ -105,31 +117,5 @@ window.addEventListener('click', function (e) {
     modal.style.display = "none"
   }
 })
-const detailsProduct = () => {
-  const detailBody = document.getElementById("product-details");
-  const div = document.createElement("div");
-  div.innerHTML
-}
 
-
-/* const displayDetails = (product) => {
-  const { count, rate } = product.rating;
-  const card = document.getElementById("product-details");
-  const div = document.createElement("div");
-  div.classList.add("product");
-  div.innerHTML = `
-  <div class="single-product">
-  <div>
-    <img class="product-image" src=${product.image}></img>
-  </div>
-  <h3>${product.title}</h3>
-  <p>Category: <span class="ptoduct-Category">${product.category}</span></p>
-  <h2>Price: $ ${product.price}</h2>
-  <p>Count : ${count} Rating : ${rate}</p>
-  <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-</div>
-  `;
-  card.appendChild(div)
-
-} */
 loadProducts();
