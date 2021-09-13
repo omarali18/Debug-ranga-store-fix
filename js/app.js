@@ -37,6 +37,7 @@ const addToCart = (id, price) => {
   document.getElementById("total-Products").innerText = count;
 };
 
+// Find all product price
 const getInputValue = (id) => {
   const element = document.getElementById(id).innerText;
   const converted = parseFloat(element);
@@ -87,7 +88,6 @@ const productUrl = async productid => {
   const url = `https://fakestoreapi.com/products/${productid}`;
   const res = await fetch(url)
   const data = await res.json()
-  // document.getElementById("product-details").textContent = "";
   productModal(data);
 }
 
