@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
 
+
   <!-- google Montserrat  font  -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,17 +19,32 @@
 </head>
 
 <body>
-  <header></header>
-  <main class="main">
-    <div class="search-field mb-5">
-      <div class="search-box">
-        <input id="input-field" class="search-field" type="text" placeholder="Wtite a product name" />
-        <button type="button" class="btn  search-button" data-toggle="button" aria-pressed="false" autocomplete="off"
-          id="search-btn" onclick="loadProducts()">
-          Search
-        </button>
+  <header>
+    <!-- input field for search product -->
+    <section>
+      <div class="search-field mb-5">
+        <div class="search-box">
+          <input id="input-field" class="search-field" type="text" placeholder="Wtite a product name" />
+          <button type="button" class="btn  search-button" data-toggle="button" aria-pressed="false" autocomplete="off"
+            id="search-btn" onclick="loadProducts()">
+            Search
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- display single product details -->
+    <section>
+      <div class="space col-md-9 col-lg-9 col-sm-7 ">
+        <div id="product-details" class="card-dede">
+        </div>
+      </div>
+    </section>
+
+  </header> <br>
+  <main class="main">
+
+    <!-- display all product on pageload -->
     <div class="row ">
       <div class="space col-md-9 col-lg-9 col-sm-7 ">
         <div id="all-products" class="">
@@ -85,7 +101,27 @@
       </div>
     </div>
   </main>
-  <footer></footer>
+  <footer>
+    <div id="details-modal" class="nodal">
+      <div class="modal-body">
+        <span onclick="closeModal()" class="close-logo">&times;</span>
+        <p>kire mama tui ki korao</p>
+        <div id="product-details">
+          <div>
+            <div>
+              <img src="" alt="img not ">
+            </div>
+            <p>Category: <span class="ptoduct-Category">${product.category}</span></p>
+            <h2>Price: $ ${product.price}</h2>
+            <p>Count : ${count} Rating : ${rate}</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </footer>
 
   <!-- add javascript  file  -->
   <script src="./js/app.js"></script>

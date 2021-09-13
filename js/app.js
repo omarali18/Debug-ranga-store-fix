@@ -10,6 +10,7 @@ const showProducts = (products) => {
   const allProducts = products.map((pd) => pd);
   for (const product of allProducts) {
     const image = product.image;
+    const { count, rate } = product.rating;
     const div = document.createElement("div");
     div.classList.add("product");
     div.innerHTML = `<div class="single-product">
@@ -19,8 +20,9 @@ const showProducts = (products) => {
       <h3 >${product.title}</h3>
       <p>Category: <span class="ptoduct-Category">${product.category}</span></p>
       <h2>Price: $ ${product.price}</h2>
+      <p>Count : ${count} Rating : ${rate}</p>
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-      <button id="details-btn" class="btn btn-danger">Details</button></div>
+      <button onclick="productUrl(${product.id})" id="details-btn" class="btn btn-danger">Details</button></div>
       `;
     document.getElementById("all-products").appendChild(div);
   }
@@ -78,4 +80,56 @@ const updateTotal = () => {
     getInputValue("total-tax");
   document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
+
+// Product details display 
+// create fatch product url
+const productUrl = async productid => {
+  const url = `https://fakestoreapi.com/products/${productid}`;
+  const res = await fetch(url)
+  const data = await res.json()
+  document.getElementById("product-details").textContent = "";
+  // displayDetails(data);
+  productModal();
+}
+
+// Display single product details
+const modal = document.getElementById("details-modal")
+const productModal = () => {
+  modal.style.display = "block"
+}
+const closeModal = () => {
+  modal.style.display = "none"
+}
+window.addEventListener('click', function (e) {
+  if (e.target == modal) {
+    modal.style.display = "none"
+  }
+})
+const detailsProduct = () => {
+  const detailBody = document.getElementById("product-details");
+  const div = document.createElement("div");
+  div.innerHTML
+}
+
+
+/* const displayDetails = (product) => {
+  const { count, rate } = product.rating;
+  const card = document.getElementById("product-details");
+  const div = document.createElement("div");
+  div.classList.add("product");
+  div.innerHTML = `
+  <div class="single-product">
+  <div>
+    <img class="product-image" src=${product.image}></img>
+  </div>
+  <h3>${product.title}</h3>
+  <p>Category: <span class="ptoduct-Category">${product.category}</span></p>
+  <h2>Price: $ ${product.price}</h2>
+  <p>Count : ${count} Rating : ${rate}</p>
+  <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
+</div>
+  `;
+  card.appendChild(div)
+
+} */
 loadProducts();
