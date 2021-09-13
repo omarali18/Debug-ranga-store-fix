@@ -2,6 +2,8 @@ body {
   overflow-x: hidden;
   font-family: "Montserrat", sans-serif;
 }
+
+/* search field and search box style  */
 .search-field {
   border: none;
   border-radius: 50px;
@@ -20,6 +22,8 @@ body {
   margin-top: 50px;
   border-right: none;
 }
+
+/* search button style */
 .search-button {
   background-color:rgb(7, 75, 163);
   color:white;
@@ -27,19 +31,22 @@ body {
   border-radius: 25px;
   margin-left: 20px;
 }
+
+ /* space card adn search aria */
 .space{
   margin-top: 20px;
 }
 #all-products {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* border: 1px solid black; */
   text-align: center;
   width: 100%;
   margin: auto;
   align-items: center;
   justify-content: center;
 }
+
+/* every single product style  */
 .single-product {
   padding: 10px;
   margin: 5px;
@@ -88,7 +95,7 @@ body {
 }
 .modal-body{
   background-color: #f4f4f4;
-  margin: 20% auto;
+  margin: 10% auto;
   padding: 20px;
   width: 30%;
   box-shadow: 15px 8px 20px rgba(0,0,0,0.17);
@@ -125,10 +132,16 @@ body {
   .cart-main {
     padding-right: 10px;
   }
+  .modal-body{
+    width: 50%;
+  }
 }
 @media only screen and (max-width: 468px) {
   #all-products {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
+  }
+  .modal-body{
+    width: 70%;
   }
 }

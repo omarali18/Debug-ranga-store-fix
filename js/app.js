@@ -87,7 +87,7 @@ const productUrl = async productid => {
   const url = `https://fakestoreapi.com/products/${productid}`;
   const res = await fetch(url)
   const data = await res.json()
-  document.getElementById("product-details").textContent = "";
+  // document.getElementById("product-details").textContent = "";
   productModal(data);
 }
 
